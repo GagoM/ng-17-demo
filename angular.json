@@ -4,6 +4,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "ng-17-demo": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "he-IL": {
+            "translation": "src/locale/messages.he.xlf"
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -25,7 +33,13 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "i18nMissingTranslation": "error",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/vars"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -66,7 +80,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ng-17-demo:build"
+            "buildTarget": "ng-17-demo:build",
+            "outputPath": "src/locale"
           }
         },
         "test": {

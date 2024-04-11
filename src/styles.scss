@@ -2,7 +2,7 @@
 @import './styles/vars/colors.scss';
 @import './styles/base/classes.scss';
 
-* {
+html {
     font-family: JetBrainsMono !important;
     font-size: 62.5%;
     color: $off-white;

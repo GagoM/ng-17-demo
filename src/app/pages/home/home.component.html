@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="wrapper">
+  <div class="header">Welcome to the Angular 17 Demo App!</div>
+  <div class="card">
+    <h2>Login</h2>
+    <form class="credentials" (submit)="onLogin()" [formGroup]="loginForm">
+      <div>
+        <label for="username">User Name</label>
+        <input type="text" formControlName="username" name="username" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" name="password" />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
