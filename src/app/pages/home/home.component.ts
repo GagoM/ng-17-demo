@@ -6,20 +6,38 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ButtonComponent } from '../../components/button/button.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [CurrencyPipe, DatePipe, ReactiveFormsModule],
+  imports: [CurrencyPipe, DatePipe, ReactiveFormsModule, ButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
   loginForm = new FormBuilder().group({
-    username: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
 
-  onLogin(): void {}
+  isLoginDisabled = false;
+
+  isLoading: boolean = false;
+
+  constructor(private auth: AuthService) {}
+
+  onLogin(): void {
+    this.isLoading = true;
+    this.isLoginDisabled = true;
+    const { username, password } = this.loginForm.getRawValue();
+    this.auth
+      .login(username!, password!)
+      .subscribe({
+        next: (loginResponse) => console.log(loginResponse),
+        error: (e) => console.error(e),
+      });
+  }
 }

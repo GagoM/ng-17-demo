@@ -1,0 +1,44 @@
+@import "colors";
+:host {
+  display: inline-flex;
+  padding: 7px 13px;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  transition: border-radius 0.2s ease-in-out;
+  text-decoration: none;
+  justify-content: center;
+  background: white;
+  color: $indigo;
+  border: none;
+  box-shadow: 0 0 10px 0;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  &:disabled,
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--df-color-primary, $neon-green);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-left: 10px;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

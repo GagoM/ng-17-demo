@@ -5,27 +5,27 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
   standalone: true,
 })
 export class CanDisableDirective {
-  isDisabled = false;
+  _isDisabled = false;
 
   @Input()
   @HostBinding('attr.disabled')
-  setIsDisabled(value: boolean) {
-    this.isDisabled = value;
+  set disabled(value: boolean) {
+    this._isDisabled = value;
   }
 
-  get disabled(): boolean {
-    return this.isDisabled;
+  get isDisabled(): boolean {
+    return this._isDisabled;
   }
 
   @HostBinding('attr.disabled')
   protected get isNativeDisabled(): '' | null {
-    return this.disabled ? '' : null;
+    return this._isDisabled ? '' : null;
   }
 
   @HostListener('click', ['$event'])
   @HostListener('dblclick', ['$event'])
   onClick(e: Event) {
-    if (this.disabled) {
+    if (this._isDisabled) {
       e.preventDefault();
       e.stopImmediatePropagation();
     }

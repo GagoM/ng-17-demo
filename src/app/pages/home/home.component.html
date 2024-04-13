@@ -11,7 +11,7 @@
         <label for="password">Password</label>
         <input type="password" formControlName="password" name="password" />
       </div>
-      <button type="submit">Login</button>
+      <button cButton type="submit" [isLoading]="isLoading" [disabled]="isLoginDisabled">Login</button>
     </form>
   </div>
 </div>
