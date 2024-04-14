@@ -36,9 +36,7 @@
             "scripts": [],
             "i18nMissingTranslation": "error",
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles/vars"
-              ]
+              "includePaths": ["src/styles/vars", "src/styles/colors"]
             }
           },
           "configurations": {
@@ -92,7 +90,12 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js",
+            "codeCoverage": true,
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles/vars", "src/styles/colors"]
+            }
           }
         }
       }

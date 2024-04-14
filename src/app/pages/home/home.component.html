@@ -5,13 +5,33 @@
     <form class="credentials" (submit)="onLogin()" [formGroup]="loginForm">
       <div>
         <label for="username">User Name</label>
-        <input type="text" formControlName="username" name="username" />
+        <input
+          testing-id="username"
+          type="text"
+          formControlName="username"
+          name="username"
+        />
       </div>
       <div>
         <label for="password">Password</label>
-        <input type="password" formControlName="password" name="password" />
+        <input
+          testing-id="password"
+          type="password"
+          formControlName="password"
+          name="password"
+        />
       </div>
-      <button cButton type="submit" [isLoading]="isLoading" [disabled]="isLoginDisabled">Login</button>
+      <button
+        cButton
+        type="submit"
+        [isLoading]="isLoading"
+        [disabled]="isLoginDisabled"
+      >
+        Login
+      </button>
     </form>
+    @if(loginSuccess) {
+    <div class="login-success" testing-id="login-success">{{ successMsg }}</div>
+    }
   </div>
 </div>

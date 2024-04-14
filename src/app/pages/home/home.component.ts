@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -22,22 +22,26 @@ export class HomeComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-
   isLoginDisabled = false;
+  isLoading = false;
+  loginSuccess = false;
+  successMsg = 'Logged In Successfully!';
 
-  isLoading: boolean = false;
-
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private cd: ChangeDetectorRef) {}
 
   onLogin(): void {
-    this.isLoading = true;
-    this.isLoginDisabled = true;
-    const { username, password } = this.loginForm.getRawValue();
-    this.auth
-      .login(username!, password!)
-      .subscribe({
-        next: (loginResponse) => console.log(loginResponse),
+    if (this.loginForm.valid) {
+      this.isLoading = true;
+      this.isLoginDisabled = true;
+      const { username, password } = this.loginForm.getRawValue();
+      this.auth.login(username!, password!).subscribe({
+        next: (loginResponse) => {
+          console.log(loginResponse);
+          this.loginSuccess = true;
+          this.cd.markForCheck();
+        },
         error: (e) => console.error(e),
       });
+    }
   }
 }

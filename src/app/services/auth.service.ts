@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { BACKEND_URL } from '../helpers/constants';
 import { LoginResponse } from '../login_response';
 
@@ -15,10 +15,11 @@ export class AuthService {
 
   login(username: string, password: string): Observable<LoginResponse> {
     console.log(`trying log in using: ${username}, ${password}`);
-    return this.http.post<LoginResponse>(this.baseUrl, {
-      username: 'kminchelle',
-      password: '0lelplR',
-      expiresInMins: 30,
-    });
+    return this.http
+      .post<LoginResponse>(this.baseUrl, {
+        username: 'kminchelle',
+        password: '0lelplR',
+        expiresInMins: 30,
+      })
   }
 }

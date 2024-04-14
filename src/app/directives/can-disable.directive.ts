@@ -8,7 +8,7 @@ export class CanDisableDirective {
   _isDisabled = false;
 
   @Input()
-  @HostBinding('attr.disabled')
+  @HostBinding('class.disabled')
   set disabled(value: boolean) {
     this._isDisabled = value;
   }
@@ -25,7 +25,7 @@ export class CanDisableDirective {
   @HostListener('click', ['$event'])
   @HostListener('dblclick', ['$event'])
   onClick(e: Event) {
-    if (this._isDisabled) {
+    if (this.isDisabled) {
       e.preventDefault();
       e.stopImmediatePropagation();
     }

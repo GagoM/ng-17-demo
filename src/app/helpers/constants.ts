@@ -1,1 +1,3 @@
-export const BACKEND_URL = 'BACKEND_URL'
+import { InjectionToken } from '@angular/core';
+
+export const BACKEND_URL = new InjectionToken<string>('BACKEND_URL');
