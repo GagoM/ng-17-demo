@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="cards">
+    <user [user]="user"></user>
+    <div class="card">
+      Address
+      <div class="address">
+        <g-map [coords]="user.address.geo"></g-map>
+      </div>
+    </div>
+  </div>
+  
+</div>

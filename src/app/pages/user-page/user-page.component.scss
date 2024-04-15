@@ -1,0 +1,9 @@
+.wrapper {
+  .cards {
+    display: flex;
+    .card {
+      flex: 1;
+      margin-left: 10px;
+    }
+  }
+}
