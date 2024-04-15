@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div class="users">
+    @for (user of users | async; track $index) {
+        <div class="user">
+            <user [user]="user"></user>
+        </div>
+    }
+  </div>
+</div>

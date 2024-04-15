@@ -6,7 +6,7 @@ import {
 
 import { AuthService } from './auth.service';
 import { provideHttpClient } from '@angular/common/http';
-import { BACKEND_URL } from '../helpers/constants';
+import { BACKEND_LOGIN_URL } from '../helpers/constants';
 import { firstValueFrom } from 'rxjs';
 import { Inject, InjectionToken, inject } from '@angular/core';
 import { USER_MOCK } from '../../mocks/user.mock';
@@ -21,14 +21,14 @@ describe('AuthService', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         {
-          provide: BACKEND_URL,
+          provide: BACKEND_LOGIN_URL,
           useValue: 'https://dummyjson.com/auth/login',
         },
       ],
     });
     service = TestBed.inject(AuthService);
     httpController = TestBed.inject(HttpTestingController);
-    backendUrl = TestBed.inject(BACKEND_URL);
+    backendUrl = TestBed.inject(BACKEND_LOGIN_URL);
   });
 
   it('should be created', () => {
