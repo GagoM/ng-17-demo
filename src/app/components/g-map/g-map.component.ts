@@ -26,14 +26,13 @@ export class GMapComponent implements OnInit {
   map: any;
 
   async ngOnInit(): Promise<void> {
-    const loader = new Loader({
-      apiKey: 'AIzaSyBtDuivD6hnJveZrUvdkAuVc3Qu3qrvaBc',
-      version: 'weekly',
-    });
-    const { Map } = await loader.importLibrary('maps');
-    this.map = new Map(this.mapEl.nativeElement, {
-      center: { lat: Number(this.coords.lat), lng: Number(this.coords.lng) },
-      zoom: 8,
-    });
+    // const loader = new Loader({
+    //   version: 'weekly',
+    // });
+    // const { Map } = await loader.importLibrary('maps');
+    // this.map = new Map(this.mapEl.nativeElement, {
+    //   center: { lat: Number(this.coords.lat), lng: Number(this.coords.lng) },
+    //   zoom: 8,
+    // });
   }
 }
