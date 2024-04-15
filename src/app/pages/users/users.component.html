@@ -2,7 +2,7 @@
   <div class="users">
     @for (user of users | async; track $index) {
         <div class="user">
-            <user [user]="user"></user>
+            <user [user]="user" (userClicked)="onUserClicked(user)"></user>
         </div>
     }
   </div>

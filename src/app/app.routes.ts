@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,9 @@ export const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    data: { animation: 'enterLeavePage' }
+  },
+  {
+    path: 'user',
+    component: UserPageComponent,
   },
 ];
