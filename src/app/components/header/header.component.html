@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="title">GagoM</div>
+  @for (link of links; track $index) {
+  <div class="link" [routerLink]="link.href">
+    {{ link.title }}
+  </div>
+  }
+</div>
