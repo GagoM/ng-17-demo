@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChildrenOutletContexts, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 
 @Component({
@@ -12,7 +12,5 @@ import { HeaderComponent } from './components/header/header.component';
 })
 export class AppComponent {
   title = 'ng-17-demo';
-
-  constructor(private contexts: ChildrenOutletContexts) {}
 
 }

@@ -12,9 +12,11 @@ import {
   of,
   switchMap,
   tap,
+  toArray,
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post';
+import { Comment } from '../models/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -29,23 +31,23 @@ export class PostsService {
     this.url = `${baseUrl}/posts`;
   }
 
-  // fetchPosts(userId: number): Observable<Post[]> {
-  fetchPosts(userId: number): void {
-    this.http
+  fetchPosts(userId: number): Observable<Post[]> {
+    return this.http
       .get<Post[]>(`${this.url}/${userId}/posts`)
       .pipe(
-        switchMap(posts => posts),
-        mergeMap(post => combineLatest([of(post), this.http.get(`${this.url}/${post.id}/comments`)])),
-        map(postAndComments => {
+        switchMap((posts) => posts),
+        mergeMap((post) =>
+          combineLatest([
+            of(post),
+            this.http.get(`${this.url}/${post.id}/comments`),
+          ])
+        ),
+        map((postAndComments) => {
           const post = postAndComments[0];
           post.comments = postAndComments[1] as Comment[];
           return post;
         }),
+        toArray()
       )
-      .subscribe({
-        next: (res) => console.log(res),
-        error: (err) => console.error(err),
-        complete: () => console.log('finished!!')
-      });
   }
 }

@@ -6,24 +6,27 @@ import { GMapComponent } from '../../components/g-map/g-map.component';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post';
 import { PostsService } from '../../services/posts.service';
+import { AsyncPipe } from '@angular/common';
+import { PostComponent } from '../../components/post/post.component';
 
 @Component({
   selector: 'user-page',
   standalone: true,
-  imports: [UserComponent, GMapComponent],
+  imports: [UserComponent, GMapComponent, AsyncPipe, PostComponent],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserPageComponent implements OnInit {
   user: User;
-  posts!: Observable<Post[]>;
+  posts$!: Observable<Post[]>;
+  isLoading = true;
 
   constructor(private router: Router, private postsService: PostsService) {
     this.user = this.router.getCurrentNavigation()?.extras.state as User;
   }
 
   ngOnInit(): void {
-    this.postsService.fetchPosts(1);
+    this.posts$ = this.postsService.fetchPosts(this.user.id);
   }
 }

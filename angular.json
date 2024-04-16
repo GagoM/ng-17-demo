@@ -94,7 +94,7 @@
             "karmaConfig": "karma.conf.js",
             "codeCoverage": true,
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles/vars", "src/styles/colors"]
+              "includePaths": ["src/styles/vars", "src/styles/colors", "src/styles/animations"]
             }
           }
         }
