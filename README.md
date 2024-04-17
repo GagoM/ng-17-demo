@@ -1,1 +1,1 @@
-This is just a demo project
+This is just a demo project to explore some of the new Angular v17 features.

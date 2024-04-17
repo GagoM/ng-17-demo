@@ -1,0 +1,7 @@
+.wrapper {
+  .users {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 30px;
+  }
+}

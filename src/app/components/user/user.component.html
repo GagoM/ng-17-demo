@@ -1,0 +1,27 @@
+<div class="card" (click)="onClick()">
+  <h2 class="title">User#{{ user.id }}</h2>
+  <div class="user-detail">
+    <div>Name</div>
+    <div>
+      {{ user.name }}
+    </div>
+  </div>
+  <div class="user-detail">
+    <div>Email</div>
+    <div>
+      {{ user.email }}
+    </div>
+  </div>
+  <div class="user-detail">
+    <div>Phone</div>
+    <div>
+      {{ user.phone }}
+    </div>
+  </div>
+  <div class="user-detail">
+    <div>Address</div>
+    <div>
+      {{ user.address | address }}
+    </div>
+  </div>
+</div>

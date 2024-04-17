@@ -3,9 +3,31 @@
 }
 
 .btn {
-    background-color: $btn-color;
+  background-color: $btn-color;
+}
+
+.nav {
+  background-color: $header-color;
 }
 
 .header {
-    background-color: $header-color;
+  font-size: 1.8rem;
+}
+
+.card {
+  background-color: $card-bg-color;
+  padding: 8px;
+  border-radius: 8px;
+  color: $bg-color;
+  font-size: 1.6rem;
+  position: relative;
+}
+
+input {
+  background-color: unset;
+  border-radius: 8px;
+  padding: 8px;
+  color: $bg-color;
+  border: 1px solid $gentle-border;
+  outline: none;
 }

@@ -1,0 +1,20 @@
+@import "colors";
+.card {
+    transition: .2s all;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px 0 $neon-green;
+        transform: scale(1.01);
+    }
+  .user-detail {
+    div {
+      &:nth-child(1) {
+        background-color: $off-white;
+        width: 100px;
+      }
+      &:nth-child(2) {
+        margin-bottom: 7px;
+      }
+    }
+  }
+}

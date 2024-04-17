@@ -1,0 +1,50 @@
+@import "colors";
+.wrapper {
+  display: flex;
+  background-color: $off-white;
+  color: $bg-color;
+  padding: 13px;
+
+  .title {
+    margin-right: 20px;
+  }
+
+  .title, .link {
+    padding: 5px;
+  }
+
+  @mixin transition() {
+    transition: 0.25s all;
+  }
+
+  .link {
+    margin: 0 10px;
+    @include transition();
+    position: relative;
+    z-index: 2;
+
+    &:hover {
+      cursor: pointer;
+      color: $off-white;
+
+      &::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: $bg-color;
+      transform-origin: bottom left;
+      @include transition();
+      z-index: -1;
+    }
+  }
+}
