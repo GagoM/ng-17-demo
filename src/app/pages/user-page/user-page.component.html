@@ -8,15 +8,18 @@
         <g-map [coords]="user.address.geo"></g-map>
       </div>
     </div>
-    <div class="posts">
-      @for (post of posts; track $index) {
-      <post [post]="post" class="post"></post>
-      }
+    <div>
+      <h2>Posts</h2>
+      <div class="items">
+        @for (post of posts; track $index) {
+        <post [post]="post" class="post"></post>
+        }
+      </div>
     </div>
   </div>
   } @else {
-    <div class="loader-wrapper">
-      <div class="loader"></div>
-    </div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
   }
 </div>
