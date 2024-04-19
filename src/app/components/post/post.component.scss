@@ -1,0 +1,16 @@
+@import "colors";
+.card {
+  height: 200px;
+
+  .title {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1.6rem;
+    background-color: $off-white;
+  }
+
+  .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

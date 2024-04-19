@@ -1,4 +1,5 @@
 <div class="wrapper">
+  @if (posts$ | async; as posts) {
   <div class="cards">
     <user [user]="user"></user>
     <div class="card">
@@ -7,6 +8,18 @@
         <g-map [coords]="user.address.geo"></g-map>
       </div>
     </div>
+    <div>
+      <h2>Posts</h2>
+      <div class="items">
+        @for (post of posts; track $index) {
+        <post [post]="post" class="post" (click)="onPostClick(post)"></post>
+        }
+      </div>
+    </div>
   </div>
-  
+  } @else {
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  }
 </div>
