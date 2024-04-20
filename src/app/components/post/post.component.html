@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="title">
+        {{ post.title }}
+    </div>
+    <div class="content">
+        {{post.body}}
+    </div>
+    <div class="comments">
+        @for (comment of post.comments; track $index) {
+            <div class="comment">{{comment.body}}</div>
+        }
+    </div>
+</div>

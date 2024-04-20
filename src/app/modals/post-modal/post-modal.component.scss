@@ -1,0 +1,14 @@
+@import "colors";
+.wrapper {
+  background-color: $bg-color;
+  height: 500px;
+  width: 350px;
+
+  .comments {
+    .comment {
+      background-color: $neon-green;
+      padding: 5px;
+      margin: 7px 0;
+    }
+  }
+}

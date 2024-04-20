@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div>
+    <h2>{{ data.post.title }}</h2>
+  </div>
+  <div>
+    {{ data.post.body }}
+  </div>
+  <div>
+    <h2>Comments</h2>
+    <div class="comments">
+        @for (comment of data.post.comments; track $index) {
+            <div class="comment">
+                {{ comment.body }}
+            </div>
+        }
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+@import '../animations/animations.scss';
+
 .container {
   background-color: $bg-color;
 }
@@ -30,4 +32,13 @@ input {
   color: $bg-color;
   border: 1px solid $gentle-border;
   outline: none;
+}
+
+.loader {
+  animation: loader 1.5s linear infinite;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid $indigo;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
