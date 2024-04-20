@@ -14,14 +14,14 @@ import { MODAL_DATA } from '../helpers/constants';
   providedIn: 'root',
 })
 export class ModalService {
-  modalComponent!: ComponentRef<ModalComponent>;
+  modalComponent!: ComponentRef<ModalComponent> | null;
 
   constructor(
     private appRef: ApplicationRef,
     private injector: EnvironmentInjector
   ) {}
 
-  open<C>(component: Type<C>, data: any = {}) {
+  open<C>(component: Type<C>, data: any = {}): ComponentRef<C> {
     const elementInjector: Injector = Injector.create({
       providers: [
         {
@@ -45,12 +45,17 @@ export class ModalService {
     document.body.appendChild(this.modalComponent.location.nativeElement);
     this.appRef.attachView(newComponent.hostView);
     this.appRef.attachView(this.modalComponent.hostView);
+    return newComponent;
   }
 
   close() {
-    this.modalComponent.location.nativeElement.style.animation = 'fade-out .2s'
-    setTimeout(() => {
-      this.modalComponent.destroy();
-    }, 190);
+    if (this.modalComponent) {
+      this.modalComponent.location.nativeElement.style.animation =
+        'fade-out .2s';
+      setTimeout(() => {
+        this.modalComponent!.destroy();
+        this.modalComponent = null;
+      }, 190);
+    }
   }
 }

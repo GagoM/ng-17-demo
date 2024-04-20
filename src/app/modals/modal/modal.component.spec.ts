@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
+import { Component, Inject, inject } from '@angular/core';
+import { MODAL_DATA } from '../../helpers/constants';
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -8,10 +10,9 @@ describe('ModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalComponent]
-    })
-    .compileComponents();
-    
+      imports: [ModalComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -20,4 +21,5 @@ describe('ModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
